@@ -11,6 +11,7 @@ import MyParticipations from "../pages/MyParticipations";
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import MyProfile from "../pages/MyProfile";
 import Challenge from "../components/challenge";
+import ErrorPage from "../pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -81,6 +82,12 @@ export const router = createBrowserRouter([
           <PrivateRoute>
             <MyProfile />
           </PrivateRoute>
+        ),
+      },
+      {
+        path: "*",
+        element: (
+          <ErrorPage/>
         ),
       },
     ],
