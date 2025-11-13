@@ -60,10 +60,10 @@ const Navbar = () => {
             {!user && (
               <>
                 <li>
-                  <MyLink to="/login">Login</MyLink>
+                  <MyLink to="/logIn">Login</MyLink>
                 </li>
                 <li>
-                  <MyLink to="/register">Register</MyLink>
+                  <MyLink to="/signUp">Register</MyLink>
                 </li>
               </>
             )}
@@ -119,10 +119,10 @@ const Navbar = () => {
         ) : (
           <>
             <div>
-              <MyLink to="/login">Login</MyLink>
+              <MyLink to="/logIn">Login</MyLink>
             </div>
             <div>
-              <MyLink to="/signUP">Register</MyLink>
+              <MyLink to="/signUp">Register</MyLink>
             </div>
           </>
         )}
