@@ -10,8 +10,9 @@ import MyAddedChallenges from "../pages/MyAddedChallenges";
 import MyParticipations from "../pages/MyParticipations";
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import MyProfile from "../pages/MyProfile";
-import Challenge from "../components/challenge";
 import ErrorPage from "../pages/ErrorPage";
+import ChallengesPage from "../pages/ChallengesPage";
+import ForgotPassword from "../pages/ForgotPassword";
 
 export const router = createBrowserRouter([
   {
@@ -25,12 +26,16 @@ export const router = createBrowserRouter([
       },
       {
         path: "/challenges",
-        element: <Challenge />,
+        element: <ChallengesPage />,
         loader: () => fetch("https://ass-10-sigma.vercel.app/challenges"),
       },
       {
         path: "/logIn",
         element: <LogIn />,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
       },
       {
         path: "/signUp",

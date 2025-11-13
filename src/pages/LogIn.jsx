@@ -1,8 +1,7 @@
 import React, { useState, useRef, useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router";
+import { Link, NavLink, useLocation, useNavigate } from "react-router";
 import {
   GoogleAuthProvider,
-  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
@@ -21,17 +20,6 @@ const LogIn = () => {
   const navigate = useNavigate();
   const from = location.state || "/";
 
-  const handleForget = (e) => {
-    e.preventDefault();
-    const email = emailref.current.value;
-    sendPasswordResetEmail(auth, email)
-      .then(() => {
-        toast("Check your email inbox or spam to reset password!");
-      })
-      .catch((error) => {
-        toast(error.message);
-      });
-  };
 
   const handleGoogle = (e) => {
     e.preventDefault();
@@ -73,7 +61,7 @@ const LogIn = () => {
         className="w-full max-w-sm bg-white rounded-lg shadow-lg p-6"
       >
         <fieldset className="border border-gray-300 p-4 rounded-md">
-          <legend className="text-xl font-bold text-purple-700">Login to EcoTrack</legend>
+          <legend className="text-xl font-bold text-green-700">Login to EcoTrack</legend>
 
           <label className="label mt-4 block font-medium text-gray-700">
             Email
@@ -82,7 +70,7 @@ const LogIn = () => {
             type="email"
             ref={emailref}
             name="email"
-            className="input w-full border border-gray-300 rounded-md p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-400"
+            className="input w-full border border-gray-300 rounded-md p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400"
             placeholder="Email"
             required
           />
@@ -95,32 +83,30 @@ const LogIn = () => {
               type={show ? "text" : "password"}
               name="password"
               placeholder="••••••••"
-              className="input w-full border border-gray-300 rounded-md p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="input w-full border border-gray-300 rounded-md p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-green-400"
               required
             />
             <span
               onClick={() => setShow(!show)}
-              className="absolute right-2 top-10 cursor-pointer text-gray-500 hover:text-purple-700"
+              className="absolute right-2 top-10 cursor-pointer text-gray-500 hover:text-green-700"
             >
               {show ? <FaEye /> : <IoEyeOff />}
             </span>
           </div>
-
-          <button
-            className="mt-2 text-sm text-blue-500 hover:underline"
-            onClick={handleForget}
-            type="button"
+          <NavLink
+            to="/forgot-password"
+            className="mt-2 text-sm text-green-500 hover:underline"
           >
             Forgot password?
-          </button>
+          </NavLink>
 
-          <button className="mt-4 w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 rounded-md transition-colors">
+          <button className="mt-4 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 rounded-md transition-colors">
             Log In
           </button>
 
           <p className="mt-3 text-center text-sm text-gray-700">
             Don’t have an account?{" "}
-            <Link to="/signUp" className="text-blue-500 hover:underline">
+            <Link to="/signUp" className="text-green-500 hover:underline">
               Create one
             </Link>
           </p>

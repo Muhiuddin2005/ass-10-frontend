@@ -3,7 +3,7 @@ import { useLoaderData } from 'react-router';
 import Challenge from '../components/challenge';
 
 
-const Challenges = () => {
+const ChallengesPage = () => {
     const challenges=useLoaderData();
     return (
     <>
@@ -18,4 +18,4 @@ const Challenges = () => {
     );
 };
 
-export default Challenges;
+export default ChallengesPage;

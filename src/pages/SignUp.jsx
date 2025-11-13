@@ -88,7 +88,7 @@ const SignUp = () => {
           <input
             type="text"
             name="name"
-            className="mt-1 p-2 w-full input rounded-md border border-gray-300 focus:ring-2 focus:outline-none focus:ring-blue-400"
+            className="mt-1 p-2 w-full input rounded-md border border-gray-300 focus:ring-2 focus:outline-none focus:ring-green-400"
             placeholder="Name"
           />
 
@@ -96,7 +96,7 @@ const SignUp = () => {
           <input
             type="email"
             name="email"
-            className="w-full input border border-gray-300 rounded-md mt-1 p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full input border border-gray-300 rounded-md mt-1 p-2 focus:outline-none focus:ring-2 focus:ring-green-400"
             placeholder="Email"
           />
 
@@ -104,7 +104,7 @@ const SignUp = () => {
           <input
             type="text"
             name="photoURL"
-            className="rounded-md input mt-1 p-2 w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="rounded-md input mt-1 p-2 w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-400"
             placeholder="Photo URL"
           />
 
@@ -115,7 +115,7 @@ const SignUp = () => {
     name="password"
     placeholder="••••••••"
     className={`input mt-1 w-full border p-2 rounded-md focus:outline-none focus:ring-2 ${
-      passwordError ? "border-red-500 focus:ring-red-400" : "border-gray-300 focus:ring-blue-400"
+      passwordError ? "border-red-500 focus:ring-red-400" : "border-gray-300 focus:ring-green-400"
     }`}
   />
   <span
@@ -127,13 +127,13 @@ const SignUp = () => {
   {passwordError && <p className="text-red-500 text-sm mt-1">{passwordError}</p>}
 </div>
 
-          <button className="mt-5 transition font-bold rounded-md py-2 w-full bg-blue-500 hover:bg-blue-600 text-white">
+          <button className="mt-5 transition font-bold rounded-md py-2 w-full bg-green-500 hover:bg-green-600 text-white">
             Sign Up
           </button>
 
           <p className="text-sm mt-3 text-center">
             Already have an account?
-            <Link to="/logIn" className="ml-1 text-blue-600 hover:underline">
+            <Link to="/logIn" className="ml-1 text-green-600 hover:underline">
               Log in
             </Link>
           </p>

@@ -46,13 +46,6 @@ const data = [
   }, []);
   return (
     <>
-      <div className="grid grid-cols-3 gap-3">
-        {challenges.slice(0, 6).map((challenge) => (
-          <Challenge key={challenge._id} challenge={challenge} />
-        ))}
-      </div>
-  
-
 
 
     {/* Corouesel....................... */}
@@ -91,7 +84,20 @@ const data = [
             </SwiperSlide>
           ))}
         </Swiper>
+
+
+        {/* Cards...................... */}
       </div>
+      <div className="grid grid-cols-3 gap-3">
+        {challenges.slice(0, 6).map((challenge) => (
+          <Challenge key={challenge._id} challenge={challenge} />
+        ))}
+      </div>
+  
+
+
+
+    
 
     
     {/* Dynamic................... */}
