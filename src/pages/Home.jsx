@@ -1,4 +1,4 @@
-import { NavLink, useLoaderData } from "react-router";
+import { NavLink } from "react-router";
 import Challenge from "../components/challenge";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -9,10 +9,11 @@ import { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, LabelList } from "recharts";
 import SkeletonChallengeCard from "../components/SkeletonChallengeCard";
 import Skeleton from "react-loading-skeleton";
+import Spinner from "../components/Spinner";
 
 
 const Home = () => {
-  const challenges = useLoaderData();
+  const [challenges, setChallenges] = useState([]);
   const [tips, setTips] = useState([]);
   const [events, setEvents] = useState([]);
   const [stats, setStats] = useState({
@@ -20,14 +21,23 @@ const Home = () => {
   totalCO2Reduced: 0,
   totalWaterLiterSaved: 0
 });
-const [loading, setLoading] = useState(false);
-
-useEffect(() => {
-  fetch("http://localhost:3000/live-stats")
-    .then(res => res.json())
-    .then(data => setStats(data));
-}, []);
-const data = [
+const [loading, setLoading] = useState(true);
+    useEffect(() => {
+    Promise.all([
+      fetch("https://ass-10-sigma.vercel.app/challenges").then(res => res.json()),
+      fetch("http://localhost:3000/latest-tips").then(res => res.json()),
+      fetch("http://localhost:3000/upcoming-events").then(res => res.json()),
+      fetch("http://localhost:3000/live-stats").then(res => res.json())
+    ])
+      .then(([data,tipsData, eventsData, statsData]) => {
+        setChallenges(data)
+        setTips(tipsData);
+        setEvents(eventsData);
+        setStats(statsData);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+  const data = [
   {
     metric: "Community Impact",
     "CO₂ Reduced (kg)": stats.totalCO2Reduced,
@@ -35,22 +45,7 @@ const data = [
     "Total Participants": stats.totalParticipants
   }
 ];
-
-  
-
-  useEffect(() => {
-  setLoading(true);
-
-  Promise.all([
-    fetch("http://localhost:3000/latest-tips").then(res => res.json()),
-    fetch("http://localhost:3000/upcoming-events").then(res => res.json())
-  ])
-    .then(([tipsData, eventsData]) => {
-      setTips(tipsData);
-      setEvents(eventsData);
-    })
-    .finally(() => setLoading(false));
-}, []);
+if (loading) return <Spinner/>
   return (
     <>
 

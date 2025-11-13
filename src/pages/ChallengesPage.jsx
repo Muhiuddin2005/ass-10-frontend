@@ -1,11 +1,24 @@
-import React from 'react';
-import { useLoaderData } from 'react-router';
+import React, { useEffect, useState } from 'react';
 import Challenge from '../components/challenge';
 import SkeletonChallengeCard from '../components/SkeletonChallengeCard';
+import Spinner from '../components/Spinner';
 
 
 const ChallengesPage = () => {
-    const challenges=useLoaderData();
+    const [challenges, setChallenges] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+
+   useEffect(() => {
+       Promise.all([
+         fetch("https://ass-10-sigma.vercel.app/challenges").then(res => res.json()),
+       ])
+         .then(([data]) => {
+           setChallenges(data)
+         })
+         .finally(() => setLoading(false));
+     }, []);
+if (loading) return <Spinner/>
     return (
     <>
   

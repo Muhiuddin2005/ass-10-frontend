@@ -22,12 +22,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
-        loader: () => fetch("https://ass-10-sigma.vercel.app/challenges"),
       },
       {
         path: "/challenges",
         element: <ChallengesPage />,
-        loader: () => fetch("https://ass-10-sigma.vercel.app/challenges"),
       },
       {
         path: "/logIn",
