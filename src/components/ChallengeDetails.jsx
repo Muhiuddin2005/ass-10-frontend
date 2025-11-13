@@ -14,8 +14,6 @@ const ChallengeDetails = () => {
   const [challenge, setChallenge] = useState({});
   const [loading, setLoading] = useState(true);
   const [refetch, setRefetch] = useState(false);
-
-
   useEffect(() => {
     fetch(`https://ass-10-sigma.vercel.app/challenges/${id}`, {
 
@@ -28,6 +26,14 @@ const ChallengeDetails = () => {
   }, [user, id, refetch]);
 
   const handleDelete = () => {
+    if (!user) {
+      toast.error("Please log in to delete this challenge.");
+      return;
+    }
+    if (user.email !== challenge.createdBy) {
+      toast.error("You can only delete your own challenge.");
+      return;
+    }
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -63,7 +69,12 @@ const ChallengeDetails = () => {
   };
 
   const handleParticipate = () => {
+    if (!user) {
+      toast.error("Please log in to participate.");
+      return;
+    }
     const Challenge = {
+      challengeId:challenge._id,
       participatedBy: user.email,
       status: "Ongoing",
       progress: 0,

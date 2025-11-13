@@ -16,7 +16,7 @@ const Challenge = ({ challenge }) => {
       <p className="text-gray-600 mb-4">Participants: {challenge.participants}</p>
       <MyLink
         to={`/challenge-details/${challenge._id}`}
-        className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 text-center"
+        className="text-white px-3 py-1 rounded text-center"
       >
         View Details
       </MyLink>

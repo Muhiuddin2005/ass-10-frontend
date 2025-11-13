@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 import { BounceLoader } from "react-spinners";
 import MyLink from "../components/MyLink";
-const MyParticipations = () => {
+const MyActivities = () => {
   const { user } = use(AuthContext);
   const [loading, setLoading] = useState(true);
   const [challenges, setChallenges] = useState([]);
@@ -55,10 +55,16 @@ const MyParticipations = () => {
             <p>
               <span className="font-medium">Progress:</span> {p.progress}%
             </p>
-            <p>
+            <p className="mb-7">
               <span className="font-medium">Joined On:</span>
               {new Date(p.joinDate).toLocaleDateString()}
             </p>
+            <MyLink
+        to={`/challenge-details/${p.challengeId}`}
+        className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 text-center"
+      >
+        View Details
+      </MyLink>
           </div>
         ))}
       </div>
@@ -68,4 +74,4 @@ const MyParticipations = () => {
   );
 };
 
-export default MyParticipations;
+export default MyActivities;

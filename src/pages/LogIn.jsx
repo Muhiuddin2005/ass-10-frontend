@@ -94,12 +94,12 @@ const LogIn = () => {
               {show ? <FaEye /> : <IoEyeOff />}
             </span>
           </div>
-          <MyLink
+          <Link
             to="/forgot-password"
             className="mt-2 text-sm text-green-500 hover:underline"
           >
             Forgot password?
-          </MyLink>
+          </Link>
 
           <button className="mt-4 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 rounded-md transition-colors">
             Log In

@@ -7,13 +7,12 @@ import AddChallenge from "../pages/AddChallenge";
 import ChallengeDetails from "../components/ChallengeDetails";
 import UpdateChallenge from "../pages/UpdateChallenge";
 import MyAddedChallenges from "../pages/MyAddedChallenges";
-import MyParticipations from "../pages/MyParticipations";
+import MyActivities from "../pages/MyActivities";
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import MyProfile from "../pages/MyProfile";
 import ErrorPage from "../pages/ErrorPage";
 import ChallengesPage from "../pages/ChallengesPage";
 import ForgotPassword from "../pages/ForgotPassword";
-import FilteredChallenges from "../pages/Filter";
 
 export const router = createBrowserRouter([
   {
@@ -73,10 +72,10 @@ export const router = createBrowserRouter([
             ),
           },
           {
-        path: "/participants",
+        path: "/my-activities",
             element: (
               <PrivateRoute>
-            <MyParticipations />
+            <MyActivities />
               </PrivateRoute>
             ),
           },
