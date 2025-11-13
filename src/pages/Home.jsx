@@ -24,10 +24,10 @@ const Home = () => {
 const [loading, setLoading] = useState(true);
     useEffect(() => {
     Promise.all([
-      fetch("http://localhost:3000/active-challenges").then(res => res.json()),
-      fetch("http://localhost:3000/latest-tips").then(res => res.json()),
-      fetch("http://localhost:3000/upcoming-events").then(res => res.json()),
-      fetch("http://localhost:3000/live-stats").then(res => res.json())
+      fetch("https://ass-10-sigma.vercel.app/active-challenges").then(res => res.json()),
+      fetch("https://ass-10-sigma.vercel.app/latest-tips").then(res => res.json()),
+      fetch("https://ass-10-sigma.vercel.app/upcoming-events").then(res => res.json()),
+      fetch("https://ass-10-sigma.vercel.app/live-stats").then(res => res.json())
     ])
       .then(([data,tipsData, eventsData, statsData]) => {
         setChallenges(data)

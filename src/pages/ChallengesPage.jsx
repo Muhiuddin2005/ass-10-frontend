@@ -12,7 +12,7 @@ const ChallengesPage = () => {
   const [maxParticipants, setMaxParticipants] = useState('');
 
   const filterChallenges = async (filterQuery) => {
-      const res = await fetch(`http://localhost:3000/api/challenges/filter${filterQuery}`);
+      const res = await fetch(`https://ass-10-sigma.vercel.app/api/challenges/filter${filterQuery}`);
       const data = await res.json();
       setChallenges(data);
       setLoading(false)
