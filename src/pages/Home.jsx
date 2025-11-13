@@ -7,6 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, LabelList } from "recharts";
+import SkeletonChallengeCard from "../components/SkeletonChallengeCard";
 
 
 const Home = () => {
@@ -89,9 +90,14 @@ const data = [
         {/* Cards...................... */}
       </div>
       <div className="grid grid-cols-3 gap-3">
-        {challenges.slice(0, 6).map((challenge) => (
-          <Challenge key={challenge._id} challenge={challenge} />
-        ))}
+        {challenges.length > 0
+        ? challenges.slice(0, 5).map((challenge) => (
+            <Challenge key={challenge._id} challenge={challenge} />
+          ))
+        :
+          Array.from({ length: 5 }).map((index) => (
+            <SkeletonChallengeCard key={index} />
+          ))}
       </div>
   
 
