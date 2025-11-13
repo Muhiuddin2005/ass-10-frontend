@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaFacebook, FaInstagram } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
@@ -14,7 +15,8 @@ const Footer = () => {
             <FaFacebook className="text-2xl" />
           </a>
           <a>
-            <FaTwitter className="text-2xl" />
+            <FaXTwitter className="text-2xl" />
+
           </a>
           <a>
             <FaInstagram className="text-2xl" />

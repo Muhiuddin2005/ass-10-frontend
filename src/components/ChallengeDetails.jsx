@@ -94,27 +94,49 @@ const ChallengeDetails = () => {
   }
 
   return (
-    <div>
-      Part: {challenge.participants}
+  <div className="max-w-md mx-auto p-4 bg-white rounded-md shadow-md text-center">
+    <img
+      src={challenge.imageUrl}
+      alt={challenge.title}
+      className="w-full h-48 object-cover rounded-md mb-4"
+    />
+    <h2 className="text-2xl font-semibold mb-2">{challenge.title}</h2>
+    <p className="text-gray-600 mb-1">Category: {challenge.category}</p>
+    <p className="text-gray-700 mb-3">{challenge.description}</p>
+
+    <div className="text-gray-600 space-y-1 mb-4">
+      <p>Duration: {challenge.duration} days</p>
+      <p>Participants: {challenge.participants}</p>
+      <p>Target: {challenge.target}</p>
+      <p>Impact Metric: {challenge.impactMetric}</p>
+      <p>Start Date: {challenge.startDate}</p>
+      <p>End Date: {challenge.endDate}</p>
+      <p>Created By: {challenge.createdBy}</p>
+    </div>
+
+    <div className="flex justify-center gap-3">
       <Link
         to={`/update-challenge/${challenge._id}`}
-
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
       >
-        Update Challenge
+        Update
       </Link>
       <button
         onClick={handleDelete}
+        className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
       >
         Delete
       </button>
       <button
         onClick={handleParticipate}
+        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
       >
         Participate
       </button>
-
     </div>
-  );
+  </div>
+);
+
 };
 
 export default ChallengeDetails;

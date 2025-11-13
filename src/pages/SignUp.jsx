@@ -17,6 +17,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const { signUp, setUser, setLoading } = useContext(AuthContext);
   const [show, setShow] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
 
   const handleGoogle = (e) => {
     e.preventDefault();
@@ -44,11 +45,14 @@ const SignUp = () => {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&#^()\-_=+])[A-Za-z\d@$!%*?&#^()\-_=+]{6,}$/;
 
     if (!regExp.test(password)) {
-      toast.error(
-        "Password must be at least 6 characters long, include at least one uppercase letter, one lowercase letter, and one special character."
-      );
-      return;
-    }
+  setPasswordError(
+    "Password must be at least 6 characters long, include at least one uppercase, one lowercase, and one special character."
+  );
+  setLoading(false);
+  return;
+} else {
+  setPasswordError("");
+}
 
     signUp(email, password)
       .then((res) => {
@@ -78,7 +82,7 @@ const SignUp = () => {
         className="w-full max-w-xs p-6 shadow-lg rounded-lg bg-white"
       >
         <fieldset className="p-4 border rounded-md border-gray-300">
-          <legend className="text-gray-700 font-bold text-lg">Sign Up</legend>
+          <legend className="text-gray-700 font-bold text-lg">Join EcoTrack</legend>
 
           <label className="mt-3 label">Name</label>
           <input
@@ -105,20 +109,23 @@ const SignUp = () => {
           />
 
           <div className="relative mt-3">
-            <label className="label">Password</label>
-            <input
-              type={show ? "text" : "password"}
-              name="password"
-              placeholder="••••••••"
-              className="input mt-1 w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-            <span
-              onClick={() => setShow(!show)}
-              className="absolute text-gray-500 top-10 right-2 cursor-pointer"
-            >
-              {show ? <FaEye /> : <IoEyeOff />}
-            </span>
-          </div>
+  <label className="label">Password</label>
+  <input
+    type={show ? "text" : "password"}
+    name="password"
+    placeholder="••••••••"
+    className={`input mt-1 w-full border p-2 rounded-md focus:outline-none focus:ring-2 ${
+      passwordError ? "border-red-500 focus:ring-red-400" : "border-gray-300 focus:ring-blue-400"
+    }`}
+  />
+  <span
+    onClick={() => setShow(!show)}
+    className="absolute text-gray-500 top-10 right-2 cursor-pointer"
+  >
+    {show ? <FaEye /> : <IoEyeOff />}
+  </span>
+  {passwordError && <p className="text-red-500 text-sm mt-1">{passwordError}</p>}
+</div>
 
           <button className="mt-5 transition font-bold rounded-md py-2 w-full bg-blue-500 hover:bg-blue-600 text-white">
             Sign Up

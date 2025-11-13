@@ -73,7 +73,7 @@ const LogIn = () => {
         className="w-full max-w-sm bg-white rounded-lg shadow-lg p-6"
       >
         <fieldset className="border border-gray-300 p-4 rounded-md">
-          <legend className="text-xl font-bold text-purple-700">Log In</legend>
+          <legend className="text-xl font-bold text-purple-700">Login to EcoTrack</legend>
 
           <label className="label mt-4 block font-medium text-gray-700">
             Email
